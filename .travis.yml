@@ -1,9 +1,11 @@
 sudo: required
 
-language: java
+services:
+- docker
 
 before_install:
-- javac Main.java
+- docker pull ibmcom/ibmjava:8-sdk
+- docker run -v `pwd`:/work ibmcom/ibmjava:8-sdk /bin/sh -c "javac /work/Main.java"
 
 script:
-- java Main
+- docker run -v `pwd`:/work ibmcom/ibmjava:8-sdk /bin/sh -c "java -cp work Main"

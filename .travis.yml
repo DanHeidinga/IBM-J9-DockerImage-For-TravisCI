@@ -8,10 +8,11 @@ services:
 before_install:
 - docker pull ibmcom/ibmjava:8-sdk
 - echo "docker image pulled"
-- docker run ibmcom/ibmjava:8-sdk /bin/sh -c "javac Main.java"
+- pwd
+- docker run -v `pwd`:/work ibmcom/ibmjava:8-sdk /bin/sh -c "javac /work/Main.java"
 - echo "Main compiled in image"
 - docker ps -a
-- docker run ibmcom/ibmjava:8-sdk /bin/sh -c "java Main"
+- docker run -v `pwd`:/work ibmcom/ibmjava:8-sdk /bin/sh -c "java -cp work Main"
 
 script:
 - java Main

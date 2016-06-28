@@ -1,0 +1,9 @@
+sudo: required
+
+language: java
+
+before_install:
+- javac Main.java
+
+script:
+- java Main

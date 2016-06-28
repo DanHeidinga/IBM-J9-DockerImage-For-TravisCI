@@ -7,7 +7,7 @@ services:
 
 before_install:
 - docker pull ibmcom/ibmjava
-- docker run -d ibmcom/ibmjava /bin/sh -c "javac Main.java"
+- docker run ibmcom/ibmjava /bin/sh -c "javac Main.java"
 - docker ps -a
 - docker run ibmcom/ibmjava /bin/sh -c "java Main"
 
